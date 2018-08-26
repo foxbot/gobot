@@ -6,7 +6,7 @@ import (
 	"github.com/foxbot/gavalink"
 )
 
-var nowPlaying = Command{
+var nowPlaying = &Command{
 	Aliases:     []string{"nowplaying", "current", "now", "np"},
 	Description: "Shows the current song",
 	Method:      onNowPlaying,

@@ -1,6 +1,6 @@
 package commands
 
-var skip = Command{
+var skip = &Command{
 	Aliases:     []string{"skip", "s", "next"},
 	Description: "Plays the next song in the queue",
 	Method:      onSkip,

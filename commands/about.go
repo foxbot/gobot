@@ -8,7 +8,7 @@ Support server: https://discord.gg/9gwuZsv
 Github: <https://github.com/ducc/JavaMusicBot>
 `
 
-var about = Command{
+var about = &Command{
 	Aliases:     []string{"about", "info", "support"},
 	Description: "Information about the bot",
 	Method:      onAbout,

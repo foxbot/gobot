@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-var volume = Command{
+var volume = &Command{
 	Aliases:     []string{"volume", "v"},
 	Description: "Changes the music volume",
 	Method:      onVolume,

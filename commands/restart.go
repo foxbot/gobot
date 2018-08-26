@@ -6,7 +6,7 @@ import (
 	"github.com/foxbot/gavalink"
 )
 
-var restart = Command{
+var restart = &Command{
 	Aliases:     []string{"restart"},
 	Description: "Plays a song from the beginning",
 	Method:      onRestart,

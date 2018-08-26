@@ -1,6 +1,6 @@
 package commands
 
-var invite = Command{
+var invite = &Command{
 	Aliases:     []string{"invite", "addbot"},
 	Description: "Adds the bot to your server",
 	Method:      onInvite,

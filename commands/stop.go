@@ -1,6 +1,6 @@
 package commands
 
-var stop = Command{
+var stop = &Command{
 	Aliases:     []string{"stop", "leave", "clear"},
 	Description: "Stops playing and leaves the voice channel",
 	Method:      onStop,

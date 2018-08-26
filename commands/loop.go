@@ -4,7 +4,7 @@ import (
 	"github.com/dabbotorg/gobot/config"
 )
 
-var loop = Command{
+var loop = &Command{
 	Aliases:     []string{"loop"},
 	Description: "Repeats the whole song queue",
 	Method:      onLoop,

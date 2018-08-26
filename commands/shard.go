@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-var shard = Command{
+var shard = &Command{
 	Aliases: []string{"shard", "debug"},
 	Method:  onShard,
 }

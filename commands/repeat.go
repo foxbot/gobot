@@ -2,7 +2,7 @@ package commands
 
 import "github.com/dabbotorg/gobot/config"
 
-var repeat = Command{
+var repeat = &Command{
 	Aliases:     []string{"repeat"},
 	Description: "Loops the current song",
 	Method:      onLoop,

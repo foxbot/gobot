@@ -1,6 +1,6 @@
 package commands
 
-var pause = Command{
+var pause = &Command{
 	Aliases:     []string{"pause", "resume"},
 	Description: "Pauses & resumes the song",
 	Method:      onPause,
