@@ -1,0 +1,38 @@
+meta:
+- prometheus
+- sentry
+- glance
+
+function:
+- queue
+- next track
+- guild reporting
+- on guild join
+- patreon
+- on guild voice move (?)
+
+commands:
+- admin
+- baseplay
+- choose
+- discordfm
+- dump
+- help
+- jump
+- load
+- loop
+- now playing
+- pause
+- play 
+- providers
+- queue
+- radio
+- remove
+- reorder
+- repeat
+- restart
+- search
+- skip
+- soundcloud
+- stop
+- volume

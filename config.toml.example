@@ -1,0 +1,9 @@
+Token = "Unprefixed Token"
+UserID = "123"
+Prefix = ",,,"
+Invite = "discord.gg/discord-api"
+
+[[Nodes]]
+REST = ""
+WebSocket = ""
+Password = ""
