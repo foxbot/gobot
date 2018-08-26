@@ -1,8 +1,9 @@
 package commands
 
 var invite = Command{
-	Aliases: []string{"invite", "addbot"},
-	Method:  onInvite,
+	Aliases:     []string{"invite", "addbot"},
+	Description: "Adds the bot to your server",
+	Method:      onInvite,
 }
 
 func onInvite(c *Context) Response {

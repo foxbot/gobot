@@ -1,8 +1,9 @@
 package commands
 
 var pause = Command{
-	Aliases: []string{"pause", "resume"},
-	Method:  onPause,
+	Aliases:     []string{"pause", "resume"},
+	Description: "Pauses & resumes the song",
+	Method:      onPause,
 }
 
 func onPause(ctx *Context) Response {
@@ -21,7 +22,6 @@ func onPause(ctx *Context) Response {
 
 	if action {
 		return textResponse("Paused music playback! Use `{{prefix}}resume` to resume.")
-	} else {
-		return textResponse("Resumed music playback!")
 	}
+	return textResponse("Resumed music playback!")
 }

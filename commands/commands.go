@@ -18,8 +18,9 @@ func Commands() []Command {
 
 // Command is a command
 type Command struct {
-	Aliases []string
-	Method  Executor
+	Aliases     []string
+	Description string
+	Method      Executor
 }
 
 // Executor defines a command action

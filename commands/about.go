@@ -9,8 +9,9 @@ Github: <https://github.com/ducc/JavaMusicBot>
 `
 
 var about = Command{
-	Aliases: []string{"about", "info", "support"},
-	Method:  onAbout,
+	Aliases:     []string{"about", "info", "support"},
+	Description: "Information about the bot",
+	Method:      onAbout,
 }
 
 func onAbout(c *Context) Response {
