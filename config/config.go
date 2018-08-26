@@ -7,11 +7,12 @@ import (
 
 // Config configures the bot
 type Config struct {
-	Token  string
-	UserID string
-	Prefix string
-	Invite string
-	Nodes  []gavalink.NodeConfig
+	Token   string
+	UserID  string
+	Prefix  string
+	Invite  string
+	Patreon bool
+	Nodes   []gavalink.NodeConfig
 }
 
 // LoadConfig loads the config
