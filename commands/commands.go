@@ -24,6 +24,7 @@ func Commands() []Command {
 		stop,
 		volume,
 		restart,
+		skip,
 	}
 }
 

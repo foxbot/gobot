@@ -9,6 +9,7 @@ function:
 - patreon
 - on guild voice move (?)
 - prettify durations
+- output now playing next song
 
 commands:
 - admin
@@ -27,7 +28,5 @@ commands:
 - remove
 - reorder
 - repeat
-- restart
 - search
-- skip
 - soundcloud
