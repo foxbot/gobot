@@ -9,6 +9,8 @@ import (
 	"strconv"
 	"syscall"
 
+	"github.com/dabbotorg/gobot/commands"
+
 	"github.com/dabbotorg/gobot/config"
 	"github.com/foxbot/gavalink"
 
@@ -134,12 +136,17 @@ func onVoiceServerUpdate(s *discordgo.Session, e *discordgo.VoiceServerUpdate) {
 func pumpErrors() {
 	l := log.New(os.Stdout, "(error) ", log.Ldate|log.Ltime)
 	for {
-		e, ok := <-errors
-		if !ok {
-			l.Println("errors channel closed, goodbye?")
-			return
+		select {
+		case e, ok := <-errors:
+			if !ok {
+				l.Println("errors channel closed, goodbye?")
+				return
+			}
+			l.Println(e)
+		case e := <-commands.Errors:
+			l.Println(e)
 		}
-		l.Println(e)
+
 		// TODO: push to raven
 	}
 }

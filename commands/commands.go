@@ -3,7 +3,11 @@ package commands
 import (
 	"github.com/dabbotorg/gobot/config"
 	"github.com/foxbot/discordgo"
+	"github.com/foxbot/gavalink"
 )
+
+// Errors pumps out internal commands errors
+var Errors = make(chan error)
 
 // Commands returns the bot's commands
 func Commands() []Command {
@@ -23,9 +27,11 @@ type Executor func(c *Context) Response
 
 // Context is a command context
 type Context struct {
-	Config  *config.Config
-	Event   *discordgo.MessageCreate
-	Session *discordgo.Session
+	Args     []string
+	Config   *config.Config
+	Event    *discordgo.MessageCreate
+	Session  *discordgo.Session
+	Lavalink *gavalink.Lavalink
 }
 
 // Response is an interface for a command response

@@ -58,13 +58,14 @@ outer:
 	}
 
 	ctx := &commands.Context{
+		Args:    args,
 		Config:  &conf,
 		Event:   e,
 		Session: s,
 	}
 
-	r := cmd.Method()
-	err := r.Act()
+	r := cmd.Method(ctx)
+	err := r.Act(ctx)
 
 	return err
 }
