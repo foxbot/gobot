@@ -8,6 +8,7 @@ function:
 - on guild join
 - patreon
 - on guild voice move (?)
+- prettify durations
 
 commands:
 - admin
@@ -19,7 +20,6 @@ commands:
 - jump
 - load
 - loop
-- now playing
 - play 
 - providers
 - queue
@@ -31,4 +31,3 @@ commands:
 - search
 - skip
 - soundcloud
-- volume
