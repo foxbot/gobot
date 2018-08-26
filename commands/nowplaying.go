@@ -6,6 +6,12 @@ import (
 	"github.com/foxbot/gavalink"
 )
 
+var nowPlaying = Command{
+	Aliases:     []string{"nowplaying", "current", "now", "np"},
+	Description: "Shows the current song",
+	Method:      onNowPlaying,
+}
+
 const npf = "Currently playing **%s** by **%s** `[%d/%d]`\nSong URL: %s"
 
 func onNowPlaying(c *Context) Response {

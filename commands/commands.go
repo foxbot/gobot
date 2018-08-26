@@ -13,7 +13,17 @@ var Errors = make(chan error)
 // Commands returns the bot's commands
 func Commands() []Command {
 	return []Command{
+		// meta
 		about,
+		invite,
+		shard,
+
+		// playstate
+		nowPlaying,
+		pause,
+		stop,
+		volume,
+		restart,
 	}
 }
 

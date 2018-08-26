@@ -5,6 +5,12 @@ import (
 	"strconv"
 )
 
+var volume = Command{
+	Aliases:     []string{"volume", "v"},
+	Description: "Changes the music volume",
+	Method:      onVolume,
+}
+
 const volPatronOnly = `**The volume command is dabBot premium only!**
 Donate for the ` + "`Volume Control`" + `tier on Patreon at https://patreon.com/dabbot to gain access.`
 
