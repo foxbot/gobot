@@ -10,8 +10,7 @@ import (
 // Errors pumps out internal commands errors
 var Errors = make(chan error)
 
-// Commands returns the bot's commands
-func Commands() []*Command {
+func commands() []*Command {
 	return []*Command{
 		// meta
 		about,
@@ -27,6 +26,19 @@ func Commands() []*Command {
 		skip,
 		loop,
 	}
+}
+
+// Commands returns the bot's commands
+func Commands() map[string]*Command {
+	m := make(map[string]*Command)
+	l := commands()
+
+	for _, c := range l {
+		for _, a := range c.Aliases {
+			m[a] = c
+		}
+	}
+	return m
 }
 
 // Command is a command

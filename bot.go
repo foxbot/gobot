@@ -42,18 +42,8 @@ func command(s *discordgo.Session, e *discordgo.MessageCreate) error {
 		args = p[1:]
 	}
 
-	var cmd *commands.Command
-
-outer:
-	for _, c := range cmds {
-		for _, a := range c.Aliases {
-			if name == a {
-				cmd = &c
-				break outer
-			}
-		}
-	}
-	if cmd == nil {
+	cmd, ok := cmds[name]
+	if !ok {
 		return nil
 	}
 
