@@ -1,0 +1,4 @@
+redis keys
+----------
+
+queues:<guild_id>           list of lavaplayer tracks

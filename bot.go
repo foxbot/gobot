@@ -52,6 +52,7 @@ func command(s *discordgo.Session, e *discordgo.MessageCreate) error {
 		Config:   &conf,
 		Event:    e,
 		Lavalink: lavalink,
+		Owo:      owoclient,
 		Redis:    rdis,
 		Session:  s,
 	}

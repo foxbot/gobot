@@ -5,6 +5,7 @@ import (
 	"github.com/foxbot/discordgo"
 	"github.com/foxbot/gavalink"
 	"github.com/go-redis/redis"
+	"github.com/whats-this/owo.go"
 )
 
 // Errors pumps out internal commands errors
@@ -25,6 +26,9 @@ func commands() []*Command {
 		restart,
 		skip,
 		loop,
+
+		// queuestate
+		dump,
 	}
 }
 
@@ -57,6 +61,7 @@ type Context struct {
 	Config   *config.Config
 	Event    *discordgo.MessageCreate
 	Lavalink *gavalink.Lavalink
+	Owo      *owo.Client
 	Redis    *redis.Client
 	Session  *discordgo.Session
 	State    *config.State

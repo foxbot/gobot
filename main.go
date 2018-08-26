@@ -4,10 +4,13 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 	"os/signal"
 	"strconv"
 	"syscall"
+
+	"github.com/whats-this/owo.go"
 
 	"github.com/dabbotorg/gobot/commands"
 	"github.com/go-redis/redis"
@@ -25,10 +28,17 @@ var (
 	prometheus int
 )
 
+const (
+	owoRoot    = owo.OfficialAPIRoot
+	uploadURL  = "https://paste.dabbot.org"
+	shortenURL = "https://paste.dabbot.org"
+)
+
 var conf config.Config
 var errors chan error
 var logger *log.Logger
 var lavalink *gavalink.Lavalink
+var owoclient *owo.Client
 var rdis *redis.Client
 var state *config.State
 
@@ -61,6 +71,8 @@ func main() {
 	rdis = redis.NewClient(&redis.Options{
 		Addr: conf.Redis,
 	})
+
+	owoclient = owo.NewClient(conf.OwoToken, owoRoot, uploadURL, shortenURL, http.DefaultClient)
 
 	_, err = rdis.Ping().Result()
 	if err != nil {
