@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/dabbotorg/gobot/config"
 	"github.com/foxbot/gavalink"
 )
 
@@ -15,16 +16,41 @@ func (l lavalinkHandler) OnTrackEnd(player *gavalink.Player, track string, reaso
 		return nil
 	}
 
-	next, err := rdis.LPop("queues:" + player.GuildID()).Result()
-	if err != nil {
-		errors <- err
-		return err
-	}
-	if next == "" {
-		return nil
+	flag := state.QueueFlags[player.GuildID()]
+
+	var next string
+
+	// repeat this track
+	if flag == config.FlagRepeat {
+		next = track
+	} else {
+		var err error
+		next, err = rdis.LPop("queues:" + player.GuildID()).Result()
+		if err != nil {
+			errors <- err
+			return err
+		}
 	}
 
-	err = player.Play(next)
+	// if no more songs in queue, and queue loop disabled, queue is done
+	if next == "" && flag != config.FlagLoop {
+		err := player.Destroy()
+		if err != nil {
+			errors <- err
+			return err
+		}
+		return nil
+	} else if next == "" && flag == config.FlagLoop { // no songs in queue, but loop is on
+		next = track
+	} else if flag == config.FlagLoop { // more songs in queue, and loop is on
+		_, err := rdis.RPush("queues:"+player.GuildID(), track).Result()
+		if err != nil {
+			errors <- err
+			// don't break out here, it would impede on user experience
+		}
+	}
+
+	err := player.Play(next)
 	if err != nil {
 		errors <- err
 	}

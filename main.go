@@ -30,10 +30,14 @@ var errors chan error
 var logger *log.Logger
 var lavalink *gavalink.Lavalink
 var rdis *redis.Client
+var state *config.State
 
 func init() {
 	errors = make(chan error)
 	logger = log.New(os.Stdout, "(main) ", log.Ldate|log.Ltime)
+	state = &config.State{
+		QueueFlags: make(map[string]int),
+	}
 
 	flag.IntVar(&low, "low", 0, "low shard ID")
 	flag.IntVar(&high, "high", 1, "upper shard ID")

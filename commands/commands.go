@@ -25,6 +25,7 @@ func Commands() []Command {
 		volume,
 		restart,
 		skip,
+		loop,
 	}
 }
 
@@ -46,6 +47,7 @@ type Context struct {
 	Lavalink *gavalink.Lavalink
 	Redis    *redis.Client
 	Session  *discordgo.Session
+	State    *config.State
 }
 
 // Response is an interface for a command response
