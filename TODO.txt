@@ -4,8 +4,6 @@ meta:
 - glance
 
 function:
-- queue
-- next track
 - guild reporting
 - on guild join
 - patreon
@@ -33,5 +31,4 @@ commands:
 - search
 - skip
 - soundcloud
-- stop
 - volume

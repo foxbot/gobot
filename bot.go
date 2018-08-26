@@ -58,10 +58,12 @@ outer:
 	}
 
 	ctx := &commands.Context{
-		Args:    args,
-		Config:  &conf,
-		Event:   e,
-		Session: s,
+		Args:     args,
+		Config:   &conf,
+		Event:    e,
+		Lavalink: lavalink,
+		Redis:    rdis,
+		Session:  s,
 	}
 
 	r := cmd.Method(ctx)

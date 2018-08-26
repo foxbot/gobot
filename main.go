@@ -10,6 +10,7 @@ import (
 	"syscall"
 
 	"github.com/dabbotorg/gobot/commands"
+	"github.com/go-redis/redis"
 
 	"github.com/dabbotorg/gobot/config"
 	"github.com/foxbot/gavalink"
@@ -28,6 +29,7 @@ var conf config.Config
 var errors chan error
 var logger *log.Logger
 var lavalink *gavalink.Lavalink
+var rdis *redis.Client
 
 func init() {
 	errors = make(chan error)
@@ -51,6 +53,15 @@ func main() {
 	t := strconv.Itoa(total)
 	lavalink = gavalink.NewLavalink(t, conf.UserID)
 	lavalink.AddNodes(conf.Nodes...)
+
+	rdis = redis.NewClient(&redis.Options{
+		Addr: conf.Redis,
+	})
+
+	_, err = rdis.Ping().Result()
+	if err != nil {
+		panic(err)
+	}
 
 	for _, s := range clients {
 		err = s.Open()
@@ -126,8 +137,7 @@ func onVoiceServerUpdate(s *discordgo.Session, e *discordgo.VoiceServerUpdate) {
 		return
 	}
 
-	h := gavalink.DummyEventHandler{}
-	_, err = node.CreatePlayer(e.GuildID, s.State.SessionID, v, h)
+	_, err = node.CreatePlayer(e.GuildID, s.State.SessionID, v, handler)
 	if err != nil {
 		errors <- err
 	}

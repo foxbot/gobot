@@ -4,6 +4,7 @@ import (
 	"github.com/dabbotorg/gobot/config"
 	"github.com/foxbot/discordgo"
 	"github.com/foxbot/gavalink"
+	"github.com/go-redis/redis"
 )
 
 // Errors pumps out internal commands errors
@@ -31,8 +32,9 @@ type Context struct {
 	Args     []string
 	Config   *config.Config
 	Event    *discordgo.MessageCreate
-	Session  *discordgo.Session
 	Lavalink *gavalink.Lavalink
+	Redis    *redis.Client
+	Session  *discordgo.Session
 }
 
 // Response is an interface for a command response

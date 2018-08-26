@@ -12,6 +12,7 @@ type Config struct {
 	Prefix  string
 	Invite  string
 	Patreon bool
+	Redis   string
 	Nodes   []gavalink.NodeConfig
 }
 
