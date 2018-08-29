@@ -126,7 +126,7 @@ func makeClients() ([]*discordgo.Session, error) {
 }
 
 func onReady(s *discordgo.Session, e *discordgo.Ready) {
-	mentionPrefix = e.User.Mention()
+	mentionPrefix = e.User.Mention() + " "
 
 	logger.Println("shard ready", s.ShardID)
 }

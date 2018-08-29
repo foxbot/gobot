@@ -28,7 +28,7 @@ func command(s *discordgo.Session, e *discordgo.MessageCreate) error {
 	if !hasPrefix {
 		return nil
 	}
-	c := e.Content[argPos+1:]
+	c := e.Content[argPos:]
 	p := strings.Split(c, " ")
 	if len(p) < 1 {
 		return nil
