@@ -8,15 +8,21 @@ import (
 	"github.com/whats-this/owo.go"
 )
 
+func init() {
+	commands = makeCommands()
+}
+
 // Errors pumps out internal commands errors
 var Errors = make(chan error)
+var commands []*Command
 
-func commands() []*Command {
+func makeCommands() []*Command {
 	return []*Command{
 		// meta
 		about,
 		invite,
 		shard,
+		help,
 
 		// playstate
 		nowPlaying,
@@ -29,15 +35,15 @@ func commands() []*Command {
 
 		// queuestate
 		dump,
+		load,
 	}
 }
 
 // Commands returns the bot's commands
 func Commands() map[string]*Command {
 	m := make(map[string]*Command)
-	l := commands()
 
-	for _, c := range l {
+	for _, c := range commands {
 		for _, a := range c.Aliases {
 			m[a] = c
 		}

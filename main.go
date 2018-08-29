@@ -68,11 +68,11 @@ func main() {
 	lavalink = gavalink.NewLavalink(t, conf.UserID)
 	lavalink.AddNodes(conf.Nodes...)
 
+	owoclient = owo.NewClient(conf.OwoToken, owoRoot, uploadURL, shortenURL, http.DefaultClient)
+
 	rdis = redis.NewClient(&redis.Options{
 		Addr: conf.Redis,
 	})
-
-	owoclient = owo.NewClient(conf.OwoToken, owoRoot, uploadURL, shortenURL, http.DefaultClient)
 
 	_, err = rdis.Ping().Result()
 	if err != nil {

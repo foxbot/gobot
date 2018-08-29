@@ -2,6 +2,7 @@ Token = "Unprefixed Token"
 UserID = "123"
 Prefix = ",,,"
 Invite = "discord.gg/discord-api"
+Patreon = false
 Redis = "localhost:6379"
 
 [[Nodes]]

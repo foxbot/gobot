@@ -10,16 +10,15 @@ function:
 - on guild voice move (?)
 - prettify durations
 - output now playing next song
+- needs to check permissions
 
 commands:
 - admin
 - baseplay
 - choose
 - discordfm
-- dump
 - help
 - jump
-- load
 - play 
 - providers
 - queue
