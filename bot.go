@@ -12,6 +12,16 @@ var cmds = commands.Commands()
 var mentionPrefix string // will be set by onReady
 
 func onMessage(s *discordgo.Session, e *discordgo.MessageCreate) {
+	defer func() {
+		if err := recover(); err != nil {
+			if e, ok := err.(error); ok {
+				errors <- e
+			} else {
+				logger.Println("recovered from a fatal non-error:", err)
+			}
+		}
+	}()
+
 	if e.Author.Bot {
 		return
 	}
